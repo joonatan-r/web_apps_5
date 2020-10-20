@@ -1,0 +1,14 @@
+{
+  "name": "node-js",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js localhost 8080"
+  },
+  "dependencies": {
+    "express": "4.16.4",
+    "pug": "3.0.0"
+  },
+  "keywords": []
+}
