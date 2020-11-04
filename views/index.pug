@@ -8,16 +8,29 @@ html
           each cell, j in row
             - id = String(i) + String(j);
           
-            td(
-              id= id + "_td", 
-              onclick="update('" + id + "')"
-              )= cell
+            td(id= id + "_td", onclick="update('" + id + "')")= cell
               form(id=id + "_f", method="POST", action="/send_board")
                 input(type="hidden", name="i", value=i)
                 input(type="hidden", name="j", value=j)
 
       script.
+        const turnToPlayer = {x: 1, o: 2};
+        let turn = "#{turn}";
+
         function update(id) {
+          if ("#{gameOver}" === "true") return;
+
           document.getElementById(id + "_f").submit();
-          document.getElementById(id + "_td").innerHTML = "x";
+          document.getElementById(id + "_td").innerHTML = turn;
+          turn = turn === "x" ? "o" : "x";
+          document.getElementById(
+            "turn_teller"
+          ).innerText = "Turn of player " + turnToPlayer[turn];
         }
+
+    - const turnToPlayer = {x: 1, o: 2};
+    p(id="turn_teller")= "Turn of player " + turnToPlayer[turn]
+    
+    if (gameOver)
+      script.
+        alert("Player " + turnToPlayer[turn] + " won!")
