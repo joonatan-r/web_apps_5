@@ -113,3 +113,17 @@ app.post("/send_board", upload.array(), (req, res) => {
   }
   turn = turn === "x" ? "o" : "x";
 });
+app.post("/restart", (req, res) => {
+  for (let i = 0; i < BOARD_SIZE; i++) {
+    for (let j = 0; j < BOARD_SIZE; j++) {
+      board[i][j] = "";
+    }
+  }
+  turn = "x";
+  gameOver = false;
+  res.render("index", {
+    board: board,
+    turn: turn,
+    gameOver: gameOver
+  });
+});

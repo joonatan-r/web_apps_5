@@ -30,6 +30,9 @@ html
 
     - const turnToPlayer = {x: 1, o: 2};
     p(id="turn_teller")= "Turn of player " + turnToPlayer[turn]
+
+    form(method="POST", action="/restart")
+      input(type="submit", value="Restart")
     
     if (gameOver)
       script.
