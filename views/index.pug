@@ -1,5 +1,23 @@
 html
   head
-    title= title
+    link(rel="stylesheet", href="/style.css")
   body
-    h1= message
+    table(id="board")
+      each row, i in board
+        tr
+          each cell, j in row
+            - id = String(i) + String(j);
+          
+            td(
+              id= id + "_td", 
+              onclick="update('" + id + "')"
+              )= cell
+              form(id=id + "_f", method="POST", action="/send_board")
+                input(type="hidden", name="i", value=i)
+                input(type="hidden", name="j", value=j)
+
+      script.
+        function update(id) {
+          document.getElementById(id + "_f").submit();
+          document.getElementById(id + "_td").innerHTML = "x";
+        }
