@@ -140,6 +140,8 @@ app.post("/send_board", upload.array(), (req, res) => {
   gameStatus.save((err) => {
     if (err) return console.error(err);
   });
+
+  res.redirect("/");
 });
 app.post("/restart", (req, res) => {
   GameStatus.deleteMany({}, (err) => {
@@ -152,9 +154,10 @@ app.post("/restart", (req, res) => {
   }
   turn = "x";
   gameOver = false;
-  res.render("index", {
-    board: board,
-    turn: turn,
-    gameOver: gameOver
-  });
+  // res.render("index", {
+  //   board: board,
+  //   turn: turn,
+  //   gameOver: gameOver
+  // });
+  res.redirect("/");
 });
