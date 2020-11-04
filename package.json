@@ -9,7 +9,8 @@
   "dependencies": {
     "express": "4.16.4",
     "pug": "3.0.0",
-    "multer": "1.0.5"
+    "multer": "1.0.5",
+    "mongoose": "^5.3.14"
   },
   "keywords": []
 }
